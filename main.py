@@ -5,7 +5,7 @@ from sensor_msgs.msg import LaserScan
 import tf
 import math
 
-kp = 0.5
+kp = 1
 ki = 0.5
 kd = 0.5
 
