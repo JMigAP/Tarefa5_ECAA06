@@ -6,14 +6,14 @@ import tf
 import math
 
 kp = 1
-ki = 0.001
-kd = 0.001
+ki = 0.01
+kd = 0.5
 
 Int = 0
 old_error = 0
 estado = 1
 T = 0.1
-error = 50
+error = 9999
 
 odom = Odometry()
 scan = LaserScan()
@@ -48,7 +48,7 @@ def timerCallBack(event):
         
         scan_len = len(scan.ranges)
         
-        if scan_len != 0:
+        if scan_len > 0:
             yaw = getAngle(odom)
             
             ind = scan.ranges.index(min(scan.ranges))
@@ -70,11 +70,13 @@ def timerCallBack(event):
             
             delta_e = error - old_error
             old_error = error
+            print('Error a pid = ')
+            print(error)
             
             P = kp*error
-            Int += error*T
+            Int += error
             I = Int * ki
-            D = delta_e * kd * T
+            D = delta_e * kd
             
             control = P+I+D
             
@@ -95,7 +97,6 @@ def timerCallBack(event):
         print(error)
         
         if abs(error) < 1:
-            print(error)
             Int = 0
             estado = 2
     
