@@ -98,7 +98,7 @@ def timerCallBack(event):
         print('error = ')
         print(error)
         
-        if abs(error) < 1:
+        if abs(error) < 3:
             Int = 0
             estado = 2
     
