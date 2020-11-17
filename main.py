@@ -5,9 +5,9 @@ from sensor_msgs.msg import LaserScan
 import tf
 import math
 
-kp = 0.9
-ki = 0.5
-kd = 0.5
+kp = 1
+ki = 0.1
+kd = 0.1
 
 Int = 0
 old_error = 0
