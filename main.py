@@ -5,7 +5,7 @@ from sensor_msgs.msg import LaserScan
 import tf
 import math
 
-kp = 1
+kp = 0.1
 ki = 0.5
 kd = 0.5
 
@@ -39,7 +39,7 @@ def scanCallBack(msg):
 
 # TIMER - Control Loop ----------------------------------------------
 def timerCallBack(event):
-    global kp, ki, kd
+    global kp, ki, kd, control
     global old_error, estado, Int
   
     if estado == 1:
@@ -75,6 +75,7 @@ def timerCallBack(event):
             D = delta_e * kd * T
             
             control = P+I+D
+            
             if control > 1:
                 control = 1
             elif control < -1:
