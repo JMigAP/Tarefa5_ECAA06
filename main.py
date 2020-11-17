@@ -104,24 +104,29 @@ def timerCallBack(event):
             estado = 2
     
     elif estado == 2:
-        
-        
         print('estado 2')
         read = min(scan.ranges)
         print('Dist: ')
         print(read)
         
         msg = Twist()
-        if read > 0.7:
+        if read > 0.5:
             msg.linear.x = 1
+            estado = 1
         else:
             msg.linear.x = 0
+            estado = 3
         
         pub.publish(msg)
-        
         Int = 0
-        estado = 1
         
+    elif estado == 3:
+        print('Estado 3 (StandBy')
+        read = min(scan.ranges)
+        print('Dist: ', read)
+        
+        if read > 0.5:
+            estado = 1
 
 pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
 odom_sub = rospy.Subscriber('/odom', Odometry, odomCallBack)
