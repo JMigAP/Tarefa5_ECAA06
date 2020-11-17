@@ -106,25 +106,8 @@ def timerCallBack(event):
         
         print('estado 2')
         read = min(scan.ranges)
+        print(read)
         
-        position = odom.pose.pose.position
-        dist = math.sqrt((setpoint[0] - position.x)**2 + (setpoint[1] - position.y) **2)
-        error = dist
-        
-        delta_e = error - old_error
-        old_error = error
-            
-        P = kp*error
-        Int += error * T
-        I = Int * ki
-        D = delta_e * kd * T
-            
-        control = P+I+D
-            
-        if control > 1:
-            control = 1
-        elif control < -1:
-            control = -1
         
         msg = Twist()
         msg.linear.x = control
