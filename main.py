@@ -6,8 +6,8 @@ import tf
 import math
 
 kp = 0.1
-ki = 0.1
-kd = 0.1
+ki = 0.001
+kd = 0.001
 
 Int = 0
 old_error = 0
