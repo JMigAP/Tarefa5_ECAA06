@@ -11,7 +11,7 @@ kd = 0.5
 
 Int = 0
 old_error = 0
-estado = 0
+estado = 1
 T = 0.1
 
 odom = Odometry()
@@ -80,7 +80,7 @@ def timerCallBack(event):
             elif control < -1:
                 control = -1
         else:
-            control = 1        
+            control = 0     
         
         msg = Twist()
         msg.angular.z = control
