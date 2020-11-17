@@ -121,7 +121,7 @@ def timerCallBack(event):
         Int = 0
         
     elif estado == 3:
-        print('Estado 3 (StandBy')
+        print('Estado 3 (StandBy)')
         read = min(scan.ranges)
         print('Dist: ', read)
         
