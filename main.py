@@ -5,9 +5,9 @@ from sensor_msgs.msg import LaserScan
 import tf
 import math
 
-kp = 0.3
-ki = 0.05
-kd = 0.05
+kp = 0.1
+ki = 0.03
+kd = 0.03
 
 Int = 0
 old_error = 0
@@ -95,7 +95,7 @@ def timerCallBack(event):
         print('error = ')
         print(error)
         
-        if abs(error) < 5:
+        if abs(error) < 1:
             msg = Twist()
             msg.angular.z = 0
             pub.publish(msg)
@@ -108,11 +108,10 @@ def timerCallBack(event):
         
         print('estado 2')
         read = min(scan.ranges)
+        print('Dist: ')
         print(read)
         
-        
         msg = Twist()
-        msg.angular.z = 0
         if read > 0.8:
             msg.linear.x = 0.5
         else:
