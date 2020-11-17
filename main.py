@@ -5,7 +5,7 @@ from sensor_msgs.msg import LaserScan
 import tf
 import math
 
-kp = 0.1
+kp = 0.9
 ki = 0.5
 kd = 0.5
 
@@ -47,7 +47,7 @@ def timerCallBack(event):
         
         scan_len = len(scan.ranges)
         
-        if scan_len > 0:
+        if scan_len != 0:
             yaw = getAngle(odom)
             
             ind = scan.ranges.index(min(scan.ranges))
