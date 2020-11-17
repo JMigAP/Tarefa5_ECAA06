@@ -112,12 +112,15 @@ def timerCallBack(event):
         print(read)
         
         msg = Twist()
-        if read > 0.8:
+        if read > 0.7:
             msg.linear.x = 0.5
         else:
             msg.linear.x = 0
         
         pub.publish(msg)
+        
+        Int = 0
+        estado = 1
         
 
 pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
