@@ -95,7 +95,7 @@ def timerCallBack(event):
         print('error = ')
         print(error)
         
-        if abs(error) < 1:
+        if abs(error) < 3:
             msg = Twist()
             msg.angular.z = 0
             pub.publish(msg)
