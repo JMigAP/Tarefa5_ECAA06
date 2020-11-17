@@ -113,7 +113,7 @@ def timerCallBack(event):
         
         msg = Twist()
         if read > 0.7:
-            msg.linear.x = 0.5
+            msg.linear.x = 1
         else:
             msg.linear.x = 0
         
