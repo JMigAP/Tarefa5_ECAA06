@@ -57,8 +57,12 @@ def timerCallBack(event):
             
             if ang > 180:
                 ang -= 360
-                
-            error = (ang - yaw)
+            
+            if ang != yaw:
+                error = (ang - yaw)
+            
+            print('error f')
+            print(error)
             
             if abs(error) > 180:
                 if setpoint < 0:
@@ -70,13 +74,14 @@ def timerCallBack(event):
             
             delta_e = error - old_error
             old_error = error
+            
             print('Error a pid = ')
             print(error)
             
             P = kp*error
-            Int += error
+            Int += error * T
             I = Int * ki
-            D = delta_e * kd
+            D = delta_e * kd * T
             
             control = P+I+D
             
