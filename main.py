@@ -5,9 +5,9 @@ from sensor_msgs.msg import LaserScan
 import tf
 import math
 
-kp = 1
-ki = 0.5
-kd = 0.5
+kp = 0.9
+ki = 0.2
+kd = 0.2
 
 Int = 0
 old_error = 0
@@ -56,9 +56,6 @@ def timerCallBack(event):
             
             if ang > 180:
                 ang -= 360
-            
-            if ang == yaw:
-                yaw += 0.00001
             
             error = (ang - yaw)
             
