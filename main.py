@@ -5,7 +5,7 @@ from sensor_msgs.msg import LaserScan
 import tf
 import math
 
-kp = 1
+kp = 0.5
 ki = 0.5
 kd = 0.5
 
@@ -93,7 +93,7 @@ def timerCallBack(event):
     elif estado == 2:
         read = min(scan.ranges)
         
-        # PID
+        ## PID
         msg = Twist()
         msg.linear.x = control
         pub.publish(msg)
