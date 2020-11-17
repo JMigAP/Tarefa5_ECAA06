@@ -104,13 +104,19 @@ def timerCallBack(event):
     
     elif estado == 2:
         
+        
         print('estado 2')
         read = min(scan.ranges)
         print(read)
         
         
         msg = Twist()
-        msg.linear.x = control
+        msg.angular.z = 0
+        if read > 0.8:
+            msg.linear.x = 0.5
+        else:
+            msg.linear.x = 0
+        
         pub.publish(msg)
         
 
