@@ -54,6 +54,7 @@ def timerCallBack(event):
             ind = scan.ranges.index(min(scan.ranges))
             inc = 2*math.pi / scan_len
             ang = (ind * inc * 180.0/math.pi) + yaw
+            
             if ang > 180:
                 ang -= 360
                 
@@ -81,18 +82,25 @@ def timerCallBack(event):
                 control = 1
             elif control < -1:
                 control = -1
+                
         else:
+            print('control = 0')
             control = 0     
         
         msg = Twist()
         msg.angular.z = control
         pub.publish(msg)
         
+        print('error = ')
+        print(error)
+        
         if abs(error) < 1:
+            print(error)
             Int = 0
             estado = 2
     
     elif estado == 2:
+        print('estado 2')
         read = min(scan.ranges)
         
         ## PID
