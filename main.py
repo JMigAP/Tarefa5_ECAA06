@@ -36,7 +36,6 @@ def odomCallBack(msg):
 def scanCallBack(msg):
     global scan
     scan = msg
-#--------------------------------------------------------------------
 
 # TIMER - Control Loop ----------------------------------------------
 def timerCallBack(event):
@@ -58,8 +57,10 @@ def timerCallBack(event):
             if ang > 180:
                 ang -= 360
             
-            if ang != yaw:
-                error = (ang - yaw)
+            if ang == yaw:
+                yaw += 0.00001
+            
+            error = (ang - yaw)
             
             print('error f')
             print(error)
@@ -75,9 +76,6 @@ def timerCallBack(event):
             delta_e = error - old_error
             old_error = error
             
-            print('Error a pid = ')
-            print(error)
-            
             P = kp*error
             Int += error * T
             I = Int * ki
@@ -91,7 +89,6 @@ def timerCallBack(event):
                 control = -1
                 
         else:
-            print('control = 0')
             control = 0     
         
         msg = Twist()
