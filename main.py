@@ -40,7 +40,7 @@ def scanCallBack(msg):
 
 # TIMER - Control Loop ----------------------------------------------
 def timerCallBack(event):
-    global kp, ki, kd, control
+    global kp, ki, kd, control, error
     global old_error, estado, Int
   
     if estado == 1:
