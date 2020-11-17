@@ -80,7 +80,7 @@ def timerCallBack(event):
             elif control < -1:
                 control = -1
         else:
-            control = 0        
+            control = 1        
         
         msg = Twist()
         msg.angular.z = control
