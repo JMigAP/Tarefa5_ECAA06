@@ -13,6 +13,7 @@ Int = 0
 old_error = 0
 estado = 1
 T = 0.1
+error = 50
 
 odom = Odometry()
 scan = LaserScan()
