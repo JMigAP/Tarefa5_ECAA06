@@ -12,7 +12,7 @@ kd = 0.03
 Int = 0
 old_error = 0
 estado = 1
-T = 0.1
+T = 0.04
 error = 9999
 
 odom = Odometry()
